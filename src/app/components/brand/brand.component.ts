@@ -10,8 +10,11 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandComponent implements OnInit {
 
-  brands : Brand[] = [];
-  currentBrand:Brand;
+  brands:Brand[] = [];
+  dataLoaded = false;
+  currentBrand : Brand = {id:-1,brandName:""};
+  filterBrandText = "";
+
   constructor(private brandService:BrandService) { }
 
   ngOnInit(): void {
@@ -19,32 +22,38 @@ export class BrandComponent implements OnInit {
   }
 
   getBrands(){
-    this.brandService.getBrands().subscribe(response=>{
-        this.brands = response.data;
-    })
+    this.brandService.getBrands().subscribe(response => {
+      this.brands = response.data;
+      this.dataLoaded = true;
+    });
   }
 
   setCurrentBrand(brand:Brand){
+    this.currentBrand = brand;
+  }
 
-     this.currentBrand = brand;
+  removeCurrentBrand(){
+    this.filterBrandText = "";
+    this.currentBrand = {id:-1,brandName:""};
   }
 
   getCurrentBrandClass(brand:Brand){
-     if(brand == this.currentBrand)
-     {
-       return "list-group-item active"
-     }
-     else
-     { return "list-group-item"}
+    if(this.currentBrand == brand){
+      return "list-group-item active"
+    }
+    else{
+      return "list-group-item"
+    }
   }
 
   getAllBrandClass(){
-    if(!this.currentBrand)
-    {
-      return "list-group-item active"
+    let defaultBrand:Brand = {id:-1, brandName:""};
+    if (this.currentBrand.id == defaultBrand.id) {
+      return "list-group-item active cursorPointer"
+    } else {
+      return "list-group-item cursorPointer"
     }
-    else
-    { return "list-group-item"}
+
   }
 }
 
