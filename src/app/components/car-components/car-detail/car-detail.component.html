@@ -1,0 +1,198 @@
+<section id="page-title-area" class="section-padding overlay">
+  <div class="container">
+    <div class="row">
+      <div style="padding-right: 15px; padding-left: 15px; width: 100%">
+        <div class="section-title text-center">
+          <h2>ARAÇ BİLGİLERİ</h2>
+          <span class="title-line"><i class="fa fa-car"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="car-list-area" class="section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div *ngIf="car" class="car-details-content">
+          <h2>
+            {{ car.description}}<span class="price"
+              >Kira: <b> {{ car.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2" }} / gün</b></span
+            >
+          </h2>
+          <div
+            id="carImageSlide"
+            class="carousel slide carousel-fade"
+            data-bs-ride="carousel"
+          >
+            <div
+              class="carousel-inner d-flex"
+              style="height: 50vh; min-height: 20rem; max-height: 40rem"
+            >
+              <div
+                *ngFor="let image of carImages; index as i; first as firstImage"
+                class="carousel-item align-self-center"
+                [ngClass]="{ active: firstImage }"
+                style="height: 100%; width: 100%"
+              >
+                <img
+                  [src]="imageUrl + image.imagePath"
+                  class=""
+                  style="height: 100%; width: 100%"
+                  [alt]="image.imagePath"
+                />
+              </div>
+
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carImageSlide"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Önceki</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carImageSlide"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Sonraki</span>
+              </button>
+            </div>
+
+          
+
+          </div>
+          <div class="car-details-info">
+            <div class="technical-info">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="tech-info-table">
+                    <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <th>Sınıf</th>
+                          <td>Compact</td>
+                        </tr>
+                        <tr>
+                          <th>Yakıt</th>
+                          <td>
+                            <span *ngIf="car.fuel == 1">Benzin</span>
+                            <span *ngIf="car.fuel == 2">Dizel</span>
+                            <span *ngIf="car.fuel == 3">Hybrid</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Kapı Sayısı</th>
+                          <td>5</td>
+                        </tr>
+                        <tr>
+                          <th>Vites</th>
+                          <td>
+                            <span *ngIf="car.gear == 1">Manuel</span>
+                            <span *ngIf="car.gear == 2">Otomatik</span>
+                            <span *ngIf="car.gear == 3">Yarı Otomatik</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Model Yılı</th>
+                          <td>{{car.modelYear}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="tech-info-list">
+                    <ul>
+                      <li *ngIf="car.abs == 1">ABS</li>
+                      <li *ngIf="car.parkingSensor == 1">Park Sensör</li>
+                      <li>Bluetooth</li>
+                      <li>Araç Kiti</li>
+                      <li>Müzik</li>
+                      <li>GPS</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="sidebar-content-wrap m-t-50">
+
+             <div *ngIf="isAdmin" class="single-sidebar d-grid gap-2 mx-auto">
+              <button
+                type="button"
+                (click)="update(car)"
+                pButton
+                icon="fa fa-refresh"
+                class="p-button-info"
+                label="Aracı Güncelle"
+              ></button>
+            </div>
+
+           <div class="single-sidebar d-grid gap-2 mx-auto">
+               <button
+                [disabled]="!isLogged"
+                type="button"
+                (click)="rent()"
+                pButton
+                icon="pi pi-shopping-cart"
+                class="p-button-info"
+                label="Kirala"
+              ></button>
+          </div>
+
+          <div class="single-sidebar">
+            <h3>KİRALAMA KOŞULLARI</h3>
+            <div class="sidebar-body">
+               <ul class="icon-list">
+                    <li>
+                        <i class="fa fa-calendar"></i>
+                        <span>27 Yaş Üstü</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-id-badge"></i>
+                        <span>Ehliyet Yaşı 3 ve Üzeri</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-credit-card"></i>
+                        <span>1 Kredi Kartı</span>
+                    </li>
+            </ul>
+            </div>
+          </div>
+
+          <div class="single-sidebar">
+            <h3>BİZE ULAŞIN</h3>
+            <div class="sidebar-body">
+              <p><i class="fa fa-mobile"></i> +90 212 555 55 55</p>
+              <p><i class="fa fa-clock-o"></i> Pzt - Sat 8.00 - 18.00</p>
+              <p></p>
+              <div class="social-icons text-center">
+                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

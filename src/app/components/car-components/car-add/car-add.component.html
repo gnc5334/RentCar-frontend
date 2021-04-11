@@ -1,0 +1,164 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Araba Ekle</h5></div>
+      <div class="card-body">
+        <form [formGroup]="carAddForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <div class="form-group">
+                  <p-dropdown
+                    styleClass="form-select-sm"
+                    id="selectBrand"
+                    formControlName="brand"
+                    [options]="brands"
+                    [(ngModel)]="selectedBrand"
+                    placeholder="Marka Seç"
+                    optionLabel="brandName"
+                    [showClear]="true"
+                  ></p-dropdown>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <p-dropdown
+                  styleClass="form-select-sm"
+                  id="selectColor"
+                  formControlName="color"
+                  [options]="colors"
+                  [(ngModel)]="selectedColor"
+                  placeholder="Renk Seç"
+                  optionLabel="colorName"
+                  [showClear]="true"
+                ></p-dropdown>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3" style="padding-left: 4px; padding-right: 4px">
+            <div class="form-group">
+              <input
+                id="description"
+                formControlName="description"
+                type="text"
+                pInputText
+                placeholder="Araba Tanımı"
+              />
+            </div>
+          </div>
+          <div class="row" style="height: 64px">
+            <div class="col-md-6">
+              <div class="mb3">
+                <div class="form-group">
+                  <input
+                    id="modelyear"
+                    formControlName="modelYear"
+                    type="text"
+                    pInputText
+                    placeholder="Model yılı"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb3">
+                <div class="input-group">
+                  <input
+                    id="dailyprice"
+                    formControlName="dailyPrice"
+                    type="text"
+                    pInputText
+                    placeholder="Günlük fiyat"
+                    style="width: 10rem"
+                  />
+                  <span class="p-inputgroup-addon"><strong> ₺</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <select
+                  class="p-dropdown form-select-sm"
+                  aria-label="Default select example"
+                >
+                  <option selected>Yakıt Türü</option>
+                  <option value="1">Benzin</option>
+                  <option value="2">Dizel</option>
+                  <option value="3">Hybrid</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <select
+                  class="p-dropdown form-select-sm"
+                  aria-label="Default select example"
+                >
+                  <option selected>Vites Türü</option>
+                  <option value="1">Manuel</option>
+                  <option value="2">Otomatik</option>
+                  <option value="3">Yarı Otomatik</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input
+                      style="width: 14px"
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="chkParkingSensor"
+                    />
+                    <label class="form-check-label" for="chkParkingSensor">
+                      Park Sensörü
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6" style="padding-left: 28px">
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input
+                      style="width: 14px"
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="chkAbs"
+                    />
+                    <label class="form-check-label" for="chkAbs"> ABS </label>
+                  </div>
+                </div>
+              </div>
+                 <div class="mb-3" style="padding-left: 4px; padding-right: 4px">
+            <div class="form-group">
+              <input
+                id="findeksScore"
+                formControlName="findeksScore"
+                type="text"
+                pInputText
+                placeholder="Findeks Puanı"
+              />
+            </div>
+          </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button
+          pButton
+          type="submit"
+          (click)="addCar()"
+          label="Ekle"
+          class="rent-btn"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>

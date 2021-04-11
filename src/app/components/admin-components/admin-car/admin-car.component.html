@@ -1,0 +1,133 @@
+<p-confirmDialog
+  styleClass="card"
+  appendToBody="true"
+  #cardelete
+  header="Araba Silme İşlemi"
+  icon= "fa fa-question-circle"
+  [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+  [style]="{ width: '50vw' }"
+>
+  <p-footer>
+    <div class="card-footer">
+      <button
+        class="rent-btn"
+        type="button"
+        pButton
+        icon="pi pi-times"
+        label="Iptal"
+        (click)="cardelete.reject()"
+      ></button>
+      <button
+        class="rent-btn"
+        type="button"
+        pButton
+        icon="pi pi-check"
+        label="Evet"
+        (click)="cardelete.accept()"
+      ></button>
+    </div>
+  </p-footer>
+</p-confirmDialog>
+<p-table class="table table-sm"
+  #cartable
+  [columns]="cols"
+  [value]="cars"
+  sortMode="multiple"
+  [paginator]="true"
+  [globalFilterFields]="[
+    'carId',
+    'brandName',
+    'carName',
+    'colorName',
+    'modelYear',
+    'dailyPrice',
+    'description'
+  ]"
+  [rows]="15"
+>
+  <ng-template pTemplate="caption">
+    <h6 class="alignleft">ARABALAR</h6>
+    <span class="alignright">
+      <i class="pi pi-search"></i>
+      <input
+        style="margin-left: 10px"
+        pInputText
+        type="text"
+        (input)="cartable.filterGlobal($any($event.target).value, 'contains')"
+        placeholder="Arama yap"
+      />
+    </span>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns class="table-light">
+    <tr>
+      <th *ngFor="let col of columns">
+        {{ col.header }}
+      </th>
+      <th>
+        <p-button
+          (click)="add()"
+          styleClass="rent-btn"
+          icon="fa fa-plus"
+        ></p-button>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-car let-columns="columns">
+    <tr>
+      <td>
+        {{ car.id }}
+      </td>
+      <td>
+        {{ car.description }}
+      </td>
+      <td>
+        {{ car.brandName }}
+      </td>
+      <td>
+        {{ car.colorName }}
+      </td>
+      <td>
+        {{ car.modelYear }}
+      </td>
+      <td>
+        {{ car.dailyPrice }}
+      </td>
+      <td>
+        <span *ngIf="car.abs == 0">Yok</span>
+        <span *ngIf="car.abs == 1">Var</span>
+      </td>
+      <td>
+        <span *ngIf="car.fuel == 1">Benzin</span>
+        <span *ngIf="car.fuel == 2">Dizel</span>
+        <span *ngIf="car.fuel == 3">Hybrid</span>
+      </td>
+      <td>
+        <span *ngIf="car.gear == 1">Manuel</span>
+        <span *ngIf="car.gear == 2">Otomatik</span>
+        <span *ngIf="car.gear == 3">Yarı Otomatik</span>
+      </td>
+      <td>
+        <span *ngIf="car.parkingSensor == 0">Yok</span>
+        <span *ngIf="car.parkingSensor == 1">Var</span>
+      </td>
+
+      <td colspan="2">
+        <p-button
+          icon="fa fa-refresh"
+          (click)="update(car)"
+          styleClass="rent-btn"
+        ></p-button>
+        <p-button
+          icon="pi pi-fw pi-trash"
+          (click)="delete(car)"
+          styleClass="rent-btn"
+        ></p-button>
+        <p-button
+          icon="pi pi-fw pi-info"
+          styleClass="rent-btn"
+          routerLink="../car/cardetails/{{ car.carId }}"
+        ></p-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

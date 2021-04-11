@@ -27,14 +27,32 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
+            "styles": [  
+              "./node_modules/primeicons/primeicons.css",             
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/primeng/resources/primeng.min.css",   
               "./node_modules/ngx-toastr/toastr.css",
-              "src/styles.css"
+              "src/assets/css/plugins/slicknav.min.css",
+              "src/assets/css/plugins/magnific-popup.css",
+              "src/assets/css/plugins/owl.carousel.min.css",
+              "src/assets/css/plugins/gijgo.css",
+              "src/assets/css/font-awesome.css",
+              "src/styles.css",
+              "src/assets/css/reset.css",
+              "src/assets/css/responsive.css"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js", 
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/jquery-3.2.1.min.js",
+              "src/assets/js/plugins/mb.YTPlayer.js",
+              "src/assets/js/plugins/owl.carousel.min.js",
+              "src/assets/js/plugins/isotope.min.js",
+              "src/assets/js/plugins/slicknav.min.js",
+              "src/assets/js/plugins/vegas.min.js",
+              "src/assets/js/plugins/waypoints.min.js",
+              "src/assets/js/plugins/magnific-popup.min.js",
+              "src/assets/js/popper.min.js",
+              "src/assets/js/main.js"
             ]
           },
           "configurations": {

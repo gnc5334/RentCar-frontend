@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CarImage } from '../models/carimage';
 import { ListResponseModel } from '../models/listResponseModel';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +14,28 @@ export class CarImageService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getCarImage():Observable<ListResponseModel<CarImage>>
-  {
-   let newPath = this.apiUrl + "carImages/getall";
-    return this.httpClient.get<ListResponseModel<CarImage>>(newPath)
+  getCarImages():Observable<ListResponseModel<CarImage>> {
+    return this.httpClient
+      .get<ListResponseModel<CarImage>>(this.apiUrl + 'carimages/getall');
+  }
+  getCarImageByCarId(carId:number):Observable<ListResponseModel<CarImage>>{
+    return this.httpClient
+    .get<ListResponseModel<CarImage>>(this.apiUrl + 'carimages/getallbycarid?carId=' + carId)
   }
 
-  getCarImagesByCarId(carId:number):Observable<ListResponseModel<CarImage>>
-  {
-    let newPath = this.apiUrl + "carImages/getcarimagesbycarid?=" +carId;
-    return this.httpClient.get<ListResponseModel<CarImage>>(newPath)
+  addImage(formData: FormData): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.apiUrl + 'carimages/add', formData);
   }
+
+  updateImage(formData: FormData): Observable<ResponseModel> {
+    return this.httpClient.put<ResponseModel>(this.apiUrl + 'carimages/update', formData);
+  }
+
+  deleteImage(imageModel: CarImage): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(
+      this.apiUrl + 'delete',
+      imageModel
+    );
+  }
+
 }

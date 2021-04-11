@@ -1,0 +1,37 @@
+<section id="login-page-wrap" class="section-padding-sign">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 m-auto">
+        <div class="login-page-content">
+          <div class="login-form">
+            <h3>KAYIT OL</h3>
+            <form [formGroup]="registerForm">
+              <div class="name">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input formControlName="firstName"  type="text" placeholder="Ad" />
+                  </div>
+                  <div class="col-md-6">
+                    <input formControlName="lastName" type="text" placeholder="Soyad" />
+                  </div>
+                </div>
+              </div>
+              <div class="username">
+                <input formControlName="email" type="email" placeholder="E-posta" />
+              </div>
+              <div class="password">
+                <input formControlName="password"  type="password" placeholder="Parola" />
+              </div>
+              <div class="log-btn">
+                <button type="submit" (click)="register()">
+                  <i class="fa fa-check-square"></i> Kayıt Ol
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

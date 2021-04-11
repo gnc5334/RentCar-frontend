@@ -1,9 +1,16 @@
 export interface CarDto
 {
-   carId:number;
-   carName:string;
+   id:number;
+   description:string;
    brandName:string;
    colorName:string;
    dailyPrice:number;
    modelYear:number;
+   previewImagePath:string;
+   minFindeksScore?:number;
+   abs:number;
+   fuel:number;
+   gear:number;
+   parkingSensor:number;
+   status?:boolean;
 }

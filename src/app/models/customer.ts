@@ -6,4 +6,5 @@ export interface Customer {
   lastName: string;
   email: string;
   status: boolean;
+  findeksScore?:number;
 }

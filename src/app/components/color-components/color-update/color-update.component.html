@@ -1,0 +1,38 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Renk Ekle</h5></div>
+      <div class="card-body">
+        <form [formGroup]="colorUpdateForm">
+          <div class="mb-3">
+            <div class="form-group">
+              <input
+                id="disabled-input" [disabled]="true" formControlName="id"
+                type="number" pInputText />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-group">
+              <input
+                id="name"
+                formControlName="name"
+                type="text"
+                pInputText
+                placeholder="Marka Adı"
+              />
+            </div>
+          </div>
+        </form>
+        <div class="card-footer">
+          <button
+            class="rent-btn"
+            icon="fa fa-refresh"
+            (click)="updateColor()"
+          >
+            Güncelle
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

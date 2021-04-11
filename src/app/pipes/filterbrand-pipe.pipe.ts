@@ -4,7 +4,7 @@ import { Brand } from '../models/brand';
 @Pipe({
   name: 'filterBrandPipe'
 })
-export class FilterbrandPipePipe implements PipeTransform {
+export class FilterBrandPipe implements PipeTransform {
 
   transform(value: Brand[], filterBrandText: string): Brand[] {
     filterBrandText = filterBrandText ? filterBrandText.toLocaleLowerCase():"";

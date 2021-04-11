@@ -1,0 +1,31 @@
+<div class="content" >
+  <div class="col-md-12">
+    <div class="card" >
+      <div class="card-header"><h5 class="title">Marka Güncelle</h5></div>
+      <div class="card-body">
+        <form [formGroup]="brandUpdateForm">
+           <div class="mb3">
+            <div class="form-group">
+              <input id="disabled-input" class="form-control" [disabled]=true formControlName="id" type="number" pInputText/>
+            </div>
+          </div>
+          <div class="mb3">
+            <div class="form-group">
+              <label for="name" class="form-label"></label>
+              <input type="text" id="name" formControlName="name"
+                class="form-control" placeholder="Marka Adı"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button type="submit" icon="fa fa-refresh" class="rent-btn" (click)="updateBrand()">Güncelle</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

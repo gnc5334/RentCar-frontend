@@ -1,12 +1,15 @@
 
 export interface Car{
-    id:number;
-    brandId:number;
-    colorId:number;
-    description:string;
-    brandName:string;
-    colorName:string;
-    dailyPrice:number;
-    modelYear:number;
-    status:boolean;
+
+    id?:number;
+    brandId?:number;
+    colorId?:number;
+    modelYear?:number;
+    dailyPrice?:number;
+    description?:string;
+    minFindeksScore?:number;
+    abs?:number;
+    fuel?:number;
+    gear?:number;
+    parkingSensor?:number;
 }

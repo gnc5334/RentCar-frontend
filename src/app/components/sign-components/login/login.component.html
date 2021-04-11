@@ -1,0 +1,26 @@
+<section id="login-page-wrap" class="section-padding-sign">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 m-auto">
+        <div class="login-page-content">
+          <div class="login-form">
+            <h3>HOŞGELDİNİZ!</h3>
+            <form [formGroup]="loginForm">
+              <div class="username">
+                <input formControlName="email" type="text" placeholder="Email" />
+              </div>
+              <div class="password">
+                <input  formControlName="password" type="password" placeholder="Şifre" />
+              </div>
+              <div class="log-btn">
+                <button type="submit" (click)="login()">
+                  <i class="fa fa-sign-in"></i> Giriş yap
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

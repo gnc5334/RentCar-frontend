@@ -4,7 +4,7 @@ import { Color } from '../models/color';
 @Pipe({
   name: 'filterColorPipe'
 })
-export class FiltercolorPipePipe implements PipeTransform {
+export class FilterColorPipe implements PipeTransform {
 
   transform(value: Color[], filterColorText: string): Color[] {
     filterColorText = filterColorText ? filterColorText.toLocaleLowerCase():"";
