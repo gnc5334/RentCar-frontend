@@ -22,12 +22,6 @@ export class CarService {
     .get<SingleResponseModel<Car>>(newPath)
   }
 
-  getCarDetailsByCarId(carId:Number):Observable<SingleResponseModel<CarDto>>{
-    let newPath = this.apiUrl + "cars/getcardetailsbycarid?id=" + carId
-    return this.httpClient
-    .get<SingleResponseModel<CarDto>>(newPath)
-  }
-
   getCarsDetails(brands?:number[],colors?:number[],carId?:number):Observable<ListResponseModel<CarDto>> {
     let newPath = this.apiUrl + "cars/getcardetails"
     let queryParams = new HttpParams()
@@ -38,7 +32,13 @@ export class CarService {
     colors?.forEach(element => {
       let color = String(element)
       queryParams = queryParams.append("colorid",color)
-    })
+    });
+    
+    if (carId>0){
+      queryParams = queryParams.append("Id",String(carId))
+    }
+    
+
     return this.httpClient
       .get<ListResponseModel<CarDto>>(newPath, {params: queryParams});
   }
