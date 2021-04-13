@@ -1,0 +1,61 @@
+<div class="col-md-12" *ngIf="customer">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="customerUpdateForm" class="form">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            id="companyName"
+            formControlName="companyName"
+            class="form-control"
+            placeholder="Şirket Adi"
+            [ngClass]="{
+              'is-invalid':
+                customerUpdateForm.get('companyName').touched &&
+                customerUpdateForm.get('companyName').invalid
+            }"
+          />
+          <label for="companyName">Şirket Adi</label>
+        </div>
+         <div class="form-floating mb-3">
+          <input
+            type="text"
+            id="phoneNumber"
+            formControlName="phoneNumber"
+            class="form-control"
+            placeholder="Telefon"
+            [ngClass]="{
+              'is-invalid':
+                customerUpdateForm.get('phoneNumber').touched &&
+                customerUpdateForm.get('phoneNumber').invalid
+            }"
+          />
+          <label for="phoneNumber">Telefon</label>
+        </div>
+         <div class="form-floating mb-3">
+          <input
+            type="text"
+            id="address"
+            formControlName="address"
+            class="form-control"
+            placeholder="Adres"
+            [ngClass]="{
+              'is-invalid':
+                customerUpdateForm.get('address').touched &&
+                customerUpdateForm.get('address').invalid
+            }"
+          />
+          <label for="address">Adres</label>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+      <button class="rent-btn" (click)="updateCustomer()">
+        Güncelle
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col-md-12" *ngIf="!customer">
+  <app-customer-add [userID]="userID"></app-customer-add>
+</div>

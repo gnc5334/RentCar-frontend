@@ -1,22 +1,79 @@
 <h2 class="text-center">Müşteri Listesi</h2>
 <div class="d-flex justify-content-center">
-    <div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>
+  <div
+    *ngIf="dataLoaded == false"
+    class="spinner-border text-success"
+    role="status"
+  >
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>
-<table *ngIf="dataLoaded==true" class="table table-success table-striped">
-    <thead>
-        <tr>
-            <th>Müşteri No</th>
-            <th>Müşteri</th>
-            <th>Şirket</th>
-        </tr>
-    </thead>
-    <tr *ngFor="let customer of customers">
-        <td>{{customer.customerId}}</td>
-        <td>{{customer.firstName + " " + customer.lastName}}</td>
-        <td>{{customer.companyName}}</td>
+<table *ngIf="dataLoaded == true" class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th>Müşteri No</th>
+      <th>Müşteri</th>
+      <th>Şirket</th>
+      <th scope="col">Findeks Puanı</th>
+      <th scope="col">İşlem</th>
     </tr>
+  </thead>
+  <tr *ngFor="let customer of customers">
+    <td>{{ customer.customerId }}</td>
+    <td>{{ customer.firstName + " " + customer.lastName }}</td>
+    <td>{{ customer.companyName }}</td>
+    <td>{{ customer.findeksScore }}</td>
+    <td>
+      <button
+        type="button"
+        icon="fa fa-edit"
+        class="btn btn-outline-primary"
+        routerLink="/userDetail/{{ customer.userId }}"
+      >
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        icon="fa fa-trash"
+        data-bs-toggle="modal"
+        data-bs-target="#deleteCustomerModal"
+        (click)="setCustomerToDelete(customer)"
+      >
+      </button>
+    </td>
+  </tr>
 </table>
 
-
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="deleteCustomerModal"
+  tabindex="-1"
+  aria-labelledby="deleteCustomerLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteCustomerLabel">Kullaniciyi Sil</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Kullaniciyi silmek istediginizden emin misiniz?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Iptal
+        </button>
+        <button type="button" class="btn btn-danger" (click)="deleteCustomer()">
+          Evet, sil
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

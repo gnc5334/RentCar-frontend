@@ -40,6 +40,13 @@ export class RentalService {
     return this.httpClient.get<Rental>(newPath);
   }
 
+  getAllByCustomerID(id: number): Observable<ListResponseModel<Rental>> {
+    return this.httpClient.get<ListResponseModel<Rental>>(
+      this.apiUrl + 'rentals/getallbycustomerid?customerId=' + id
+    );
+  }
+
+
   isRentable(rental:Rental):Observable<ResponseModel>{
     let newPath = this.apiUrl + "rentals/isrentable"
     return this.httpClient.post<ResponseModel>(newPath,rental);

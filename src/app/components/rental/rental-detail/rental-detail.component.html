@@ -1,0 +1,27 @@
+<table *ngIf="rentals" class="table align-middle">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Araç</th>
+      <th scope="col">Teslim Alma</th>
+      <th scope="col">Teslim Etme</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rental of rentals; index as i">
+      <td>{{ i + 1 }}</td>
+      <td *ngIf="cars[i]">
+        <img
+          [src]="baseUrl + cars[i].previewImagePath"
+          alt=""
+          height="108"
+          width="192"
+          routerLink="/cardetails/{{ cars[i].id }}"
+          style="cursor: pointer"
+        />
+      </td>
+      <td>{{ rental.rentDate | date: "yyyy-MM-dd" }}</td>
+      <td>{{ rental.returnDate | date: "yyyy-MM-dd" }}</td>
+    </tr>
+  </tbody>
+</table>

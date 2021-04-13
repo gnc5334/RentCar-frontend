@@ -28,10 +28,30 @@ export class CustomerService {
     .get<SingleResponseModel<Customer>>(newPath)
   }
 
+  getByUserID(id: number): Observable<SingleResponseModel<Customer>> {
+    return this.httpClient.get<SingleResponseModel<Customer>>(
+      this.apiUrl + 'customers/getbyuserid?id=' + id
+    );
+  }
+
+  add(customerModel: Customer): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(
+      this.apiUrl + 'customers/add',
+      customerModel
+    );
+  }
+
   update(customer:Customer):Observable<ResponseModel>{
     let newPath = this.apiUrl + "customers/update"
     return this.httpClient
     .put<ResponseModel>(newPath,customer)
+  }
+
+  delete(customerModel: Customer): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(
+      this.apiUrl + 'customers/delete',
+      customerModel
+    );
   }
 
 }

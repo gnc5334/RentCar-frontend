@@ -55,6 +55,9 @@ import { AdminCarComponent } from './components/admin-components/admin-car/admin
 import { AdminColorComponent } from './components/admin-components/admin-color/admin-color.component';
 import { ColorUpdateComponent } from './components/color-components/color-update/color-update.component';
 import { CarImagesComponent } from './components/car-components/car-images/car-images.component';
+import { RentalDetailComponent } from './components/rental/rental-detail/rental-detail.component';
+import { CustomerAddComponent } from './components/customer/customer-add/customer-add.component';
+import { CustomerDetailComponent } from './components/customer/customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +91,10 @@ import { CarImagesComponent } from './components/car-components/car-images/car-i
     AdminCarComponent,
     AdminColorComponent,
     ColorUpdateComponent,
-    CarImagesComponent
+    CarImagesComponent,
+    RentalDetailComponent,
+    CustomerAddComponent,
+    CustomerDetailComponent
   ],
   imports: [
     BrowserModule,

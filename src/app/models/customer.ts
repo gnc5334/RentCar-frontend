@@ -6,5 +6,7 @@ export interface Customer {
   lastName: string;
   email: string;
   status: boolean;
+  phoneNumber?:string;
+  address?:string;
   findeksScore?:number;
 }

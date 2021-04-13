@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="customerAddForm" class="form">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          id="companyName"
+          formControlName="companyName"
+          class="form-control"
+          placeholder="Şirket adı"
+          [ngClass]="{
+            'is-invalid':
+              customerAddForm.get('companyName').touched &&
+              customerAddForm.get('companyName').invalid
+          }"
+        />
+        <label for="companyName">Şirket Adı</label>
+      </div>
+       <div class="form-floating mb-3">
+          <input
+            type="text"
+            id="phoneNumber"
+            formControlName="phoneNumber"
+            class="form-control"
+            placeholder="Telefon"
+            [ngClass]="{
+              'is-invalid':
+                customerAddForm.get('phoneNumber').touched &&
+                customerAddForm.get('phoneNumber').invalid
+            }"
+          />
+          <label for="phoneNumber">Telefon</label>
+        </div>
+         <div class="form-floating mb-3">
+          <input
+            type="text"
+            id="address"
+            formControlName="address"
+            class="form-control"
+            placeholder="Adres"
+            [ngClass]="{
+              'is-invalid':
+                customerAddForm.get('address').touched &&
+                customerAddForm.get('address').invalid
+            }"
+          />
+          <label for="address">Adres</label>
+        </div>
+    </form>
+  </div>
+  <div class="card-footer">
+    <button class="rent-btn" (click)="addCustomer()">
+      Ekle
+    </button>
+  </div>
+</div>

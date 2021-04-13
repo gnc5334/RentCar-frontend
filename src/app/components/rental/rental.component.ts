@@ -58,7 +58,7 @@ export class RentalComponent implements OnInit {
       let currentUserId = this.authService.getCurrentUserId()
       if(await this.findeksService.isCustomerFindexEnough(currentUserId,this.car.id)){
         this.rental = this.rental;
-        this.rental.userId = this.authService.getCurrentUserId()
+        this.rental.customerId = this.authService.getCurrentUserId()
         this.openCreditCard()
       }
       else{
@@ -70,7 +70,7 @@ export class RentalComponent implements OnInit {
   }
 
   async setRentable(){
-    this.rental = {carId:this.car.id,rentStartDate:this.startDate,rentEndDate:this.endDate,totalRentPrice:this.calculatePrice()};
+    this.rental = {carId:this.car.id,customerId:this.authService.getCurrentUserId(),rentDate:this.startDate,returnDate:this.endDate,totalRentPrice:this.calculatePrice()};
     return (await this.rentalService.isRentable(this.rental).toPromise()).success
   }
 

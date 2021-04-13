@@ -1,12 +1,10 @@
 
 export interface Rental
 {
-    id?:number;
+    rentalId?:number;
     carId:number;
-    userId?:number;
-    rentDate?:string;
-    rentStartDate:string;
-    rentEndDate?:string;
+    customerId?:number;
+    rentDate:string;
     returnDate?:string;
     totalRentPrice?:number;
 }
