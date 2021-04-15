@@ -58,6 +58,8 @@ import { CarImagesComponent } from './components/car-components/car-images/car-i
 import { RentalDetailComponent } from './components/rental/rental-detail/rental-detail.component';
 import { CustomerAddComponent } from './components/customer/customer-add/customer-add.component';
 import { CustomerDetailComponent } from './components/customer/customer-detail/customer-detail.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +96,9 @@ import { CustomerDetailComponent } from './components/customer/customer-detail/c
     CarImagesComponent,
     RentalDetailComponent,
     CustomerAddComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    ContactComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

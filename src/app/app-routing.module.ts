@@ -9,6 +9,8 @@ import { CreditCardComponent } from './components/creditcard/creditcard.componen
 import { AdminGuard } from './guards/admin.guard';
 import { AdminComponent } from './components/admin-components/admin/admin.component';
 import { ProfileComponent } from './components/profile-components/profile/profile.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   {path:"", pathMatch:"full", component:HomepageComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
   {path:"rental/:carId", component:RentalComponent,canActivate:[LoginGuard]},
   {path:"creditcard/:rental", component:CreditCardComponent,canActivate:[LoginGuard]},
   {path:"homepage", component:HomepageComponent},
+  {path:"contact", component:ContactComponent},
+  {path:"about", component:AboutComponent},
   {path: "admin", component: AdminComponent,canActivate:[AdminGuard]},
   {path: "profile", component:ProfileComponent,canActivate:[LoginGuard]}
 

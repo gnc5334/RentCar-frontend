@@ -1649,7 +1649,7 @@ body.loader-active {
 }
 
 .preloader-spinner {
-	left: 40%;
+	left: 50%;
 	top: 50%;
 	-webkit-transform: translate(-40%, -50%);
 	transform: translate(-40%, -50%);
