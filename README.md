@@ -1,4 +1,4 @@
-# Rent A Car
+# Rent A Car Project
 
 <ul>
 <li>This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.</li>
